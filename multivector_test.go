@@ -15,7 +15,7 @@ func TestNewMultivector(t *testing.T) {
 		r = append(r, big.NewRat(c[i], int64(1)))
 	}
 	// m.e0, m.e1, m.e2, m.e3, m.e12, m.e13, m.e23, m.e123.
-	m := New(*r[0], *r[1], *r[2], *r[3], *r[4], *r[5], *r[6], *r[7])
+	m := NewMultivector(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[7])
 	// Check generated multivector.
 	if m.E0.RatString() != "12" ||
 		m.E1.RatString() != "23" ||
