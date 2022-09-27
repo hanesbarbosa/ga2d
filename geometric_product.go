@@ -2,20 +2,20 @@ package ga3d
 
 import "math/big"
 
-// GeometricProduct yields the geometric product of two multivectors
+// GeometricProduct yields the geometric product of two multivectors.
 func GeometricProduct(m1, m2 Multivector) Multivector {
 	// Multivector to be returned.
-	m := NewMultivector(new(big.Rat), new(big.Rat), new(big.Rat), new(big.Rat), new(big.Rat), new(big.Rat), new(big.Rat), new(big.Rat))
+	m := NewMultivector(big.NewRat(0, 1), big.NewRat(0, 1), big.NewRat(0, 1), big.NewRat(0, 1), big.NewRat(0, 1), big.NewRat(0, 1), big.NewRat(0, 1), big.NewRat(0, 1))
 
 	c := [8]*big.Rat{
-		new(big.Rat),
-		new(big.Rat),
-		new(big.Rat),
-		new(big.Rat),
-		new(big.Rat),
-		new(big.Rat),
-		new(big.Rat),
-		new(big.Rat),
+		big.NewRat(0, 1),
+		big.NewRat(0, 1),
+		big.NewRat(0, 1),
+		big.NewRat(0, 1),
+		big.NewRat(0, 1),
+		big.NewRat(0, 1),
+		big.NewRat(0, 1),
+		big.NewRat(0, 1),
 	}
 
 	// 1st Coefficient

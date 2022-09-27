@@ -29,3 +29,30 @@ func NewMultivector(e0, e1, e2, e3, e12, e13, e23, e123 *big.Rat) Multivector {
 		E123: e123,
 	}
 }
+
+// Copy is a function that copies the coefficient values into a new multivector
+// to avoid errors by pointer reference.
+func (m Multivector) Copy() Multivector {
+	// Multivector copy (cloned).
+	mc := Multivector{
+		E0:   new(big.Rat),
+		E1:   new(big.Rat),
+		E2:   new(big.Rat),
+		E3:   new(big.Rat),
+		E12:  new(big.Rat),
+		E13:  new(big.Rat),
+		E23:  new(big.Rat),
+		E123: new(big.Rat),
+	}
+
+	mc.E0.SetString(m.E0.RatString())
+	mc.E1.SetString(m.E1.RatString())
+	mc.E2.SetString(m.E2.RatString())
+	mc.E3.SetString(m.E3.RatString())
+	mc.E12.SetString(m.E12.RatString())
+	mc.E13.SetString(m.E13.RatString())
+	mc.E23.SetString(m.E23.RatString())
+	mc.E123.SetString(m.E123.RatString())
+
+	return mc
+}
