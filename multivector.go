@@ -32,7 +32,7 @@ func NewMultivector(e0, e1, e2, e3, e12, e13, e23, e123 *big.Rat) Multivector {
 
 // Copy is a function that copies the coefficient values into a new multivector
 // to avoid errors by pointer reference.
-func (m Multivector) Copy() Multivector {
+func (m Multivector) copy() Multivector {
 	// Multivector copy (cloned).
 	mc := Multivector{
 		E0:   new(big.Rat),
