@@ -7,7 +7,7 @@ import (
 )
 
 // Tests if the scalar division is calculated properly.
-func TestScalarDivision(t *testing.T) {
+func TestSDiv(t *testing.T) {
 	// Coefficients as integer numbers.
 	n1 := []int64{2, 3, 4, 6, 7}
 	// Coefficients as rational numbers.
@@ -24,7 +24,7 @@ func TestScalarDivision(t *testing.T) {
 	// Scalar divisor.
 	s := int64(2)
 
-	m = ScalarDivision(m, s)
+	m.SDiv(s)
 
 	if strings.Compare(m.E0.String(), "1/1") != 0 ||
 		strings.Compare(m.E1.String(), "3/2") != 0 ||

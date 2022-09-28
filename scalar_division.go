@@ -2,8 +2,8 @@ package ga3d
 
 import "math/big"
 
-// ScalarDivision divides a multivector by a scalar.
-func ScalarDivision(m Multivector, n int64) Multivector {
+// SDiv divides a multivector by a scalar.
+func (m Multivector) SDiv(n int64) Multivector {
 	d := big.NewRat(int64(1), n)
 	m.E0.Mul(m.E0, d)
 	m.E1.Mul(m.E1, d)

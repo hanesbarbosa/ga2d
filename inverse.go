@@ -5,7 +5,7 @@ func Inverse(m Multivector) Multivector {
 	mc := m.copy()
 	n := numerator(m)
 	d := denominator(mc)
-	return ScalarDivision(n, d)
+	return n.SDiv(d)
 }
 
 // numerator to be defined.

@@ -7,7 +7,7 @@ import (
 )
 
 // Tests the addition of two multivectors.
-func TestAddition(t *testing.T) {
+func TestAdd(t *testing.T) {
 	// Coefficients as integer numbers.
 	n1 := []int64{1, 2, 3, 4, 5, 6, 7, 8}
 	n2 := []int64{8, 7, 6, 5, 4, 3, 2, 1}
@@ -26,12 +26,12 @@ func TestAddition(t *testing.T) {
 	m1 := NewMultivector(c1[0], c1[1], c1[2], c1[3])
 	m2 := NewMultivector(c2[0], c2[1], c2[2], c2[3])
 	// Calculate addition.
-	ms := Addition(m1, m2)
+	m1.Add(m2)
 
-	if strings.Compare(ms.E0.RatString(), "9") != 0 ||
-		strings.Compare(ms.E1.RatString(), "9") != 0 ||
-		strings.Compare(ms.E2.RatString(), "9") != 0 ||
-		strings.Compare(ms.E12.RatString(), "9") != 0 {
+	if strings.Compare(m1.E0.RatString(), "9") != 0 ||
+		strings.Compare(m1.E1.RatString(), "9") != 0 ||
+		strings.Compare(m1.E2.RatString(), "9") != 0 ||
+		strings.Compare(m1.E12.RatString(), "9") != 0 {
 		t.Errorf("error calculating addition")
 	}
 }

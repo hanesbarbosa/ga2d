@@ -7,7 +7,7 @@ import (
 )
 
 // Tests if the scalar multiplication is calculated properly.
-func TestScalarMultiplication(t *testing.T) {
+func TestSMul(t *testing.T) {
 	// Coefficients as integer numbers.
 	n1 := []int64{40, -29, 29, 33}
 	// Coefficients as rational numbers.
@@ -25,7 +25,7 @@ func TestScalarMultiplication(t *testing.T) {
 	n := new(big.Rat)
 	n.SetString("2/1")
 
-	m = ScalarMultiplication(m, n)
+	m.SMul(n)
 
 	if strings.Compare(m.E0.RatString(), "80") != 0 ||
 		strings.Compare(m.E1.RatString(), "-58") != 0 ||
