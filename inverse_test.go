@@ -9,7 +9,7 @@ import (
 
 func initializeMultivector() Multivector {
 	// Numerators.
-	c := []int64{40, -29, 29, -25, 33, -29, 32, -28}
+	c := []int64{40, -29, 29, 33}
 	// Rationals to create the multivector.
 	var r []*big.Rat
 	// Generate rational numbers.
@@ -17,7 +17,7 @@ func initializeMultivector() Multivector {
 		r = append(r, big.NewRat(c[i], int64(1)))
 	}
 	// m.e0, m.e1, m.e2, m.e3, m.e12, m.e13, m.e23, m.e123.
-	m := NewMultivector(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[7])
+	m := NewMultivector(r[0], r[1], r[2], r[3])
 	return m
 }
 
@@ -25,14 +25,11 @@ func initializeMultivector() Multivector {
 func TestInverse(t *testing.T) {
 	m := initializeMultivector()
 	m = Inverse(m)
-	if strings.Compare(m.E0.RatString(), "70168/2313425") != 0 ||
-		strings.Compare(m.E1.RatString(), "55739/2313425") != 0 ||
-		strings.Compare(m.E2.RatString(), "-30363/2313425") != 0 ||
-		strings.Compare(m.E3.RatString(), "50303/2313425") != 0 ||
-		strings.Compare(m.E12.RatString(), "-37879/2313425") != 0 ||
-		strings.Compare(m.E13.RatString(), "54491/2313425") != 0 ||
-		strings.Compare(m.E23.RatString(), "-34752/2313425") != 0 ||
-		strings.Compare(m.E123.RatString(), "-24324/2313425") != 0 {
+
+	if strings.Compare(m.E0.RatString(), "40/1007") != 0 ||
+		strings.Compare(m.E1.RatString(), "29/1007") != 0 ||
+		strings.Compare(m.E2.RatString(), "-29/1007") != 0 ||
+		strings.Compare(m.E12.RatString(), "-33/1007") != 0 {
 		t.Errorf("wrong results for inverse")
 	}
 }
@@ -42,15 +39,10 @@ func TestNumerator(t *testing.T) {
 	m := initializeMultivector()
 	m = numerator(m)
 
-	// 70168e0 + 55739e1 + -30363e2 + 50303e3 + -37879e12 + 54491e13 + -34752e23 + -24324e123
-	if strings.Compare(m.E0.RatString(), "70168") != 0 ||
-		strings.Compare(m.E1.RatString(), "55739") != 0 ||
-		strings.Compare(m.E2.RatString(), "-30363") != 0 ||
-		strings.Compare(m.E3.RatString(), "50303") != 0 ||
-		strings.Compare(m.E12.RatString(), "-37879") != 0 ||
-		strings.Compare(m.E13.RatString(), "54491") != 0 ||
-		strings.Compare(m.E23.RatString(), "-34752") != 0 ||
-		strings.Compare(m.E123.RatString(), "-24324") != 0 {
+	if strings.Compare(m.E0.RatString(), "40280") != 0 ||
+		strings.Compare(m.E1.RatString(), "29203") != 0 ||
+		strings.Compare(m.E2.RatString(), "-29203") != 0 ||
+		strings.Compare(m.E12.RatString(), "-33231") != 0 {
 		t.Errorf("wrong results for numerator")
 	}
 }
@@ -61,7 +53,7 @@ func TestDenominator(t *testing.T) {
 	e0 := denominator(m)
 
 	// TODO: refactor of comparison.
-	if strings.Compare(strconv.Itoa(int(e0)), "2313425") != 0 {
+	if strings.Compare(strconv.Itoa(int(e0)), "1014049") != 0 {
 		t.Errorf("wrong result for coefficient")
 	}
 }

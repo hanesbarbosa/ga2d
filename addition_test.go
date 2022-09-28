@@ -23,19 +23,15 @@ func TestAddition(t *testing.T) {
 		c2 = append(c2, big.NewRat(n2[i], d))
 	}
 	// Generate multivectors.
-	m1 := NewMultivector(c1[0], c1[1], c1[2], c1[3], c1[4], c1[5], c1[6], c1[7])
-	m2 := NewMultivector(c2[0], c2[1], c2[2], c2[3], c2[4], c2[5], c2[6], c2[7])
+	m1 := NewMultivector(c1[0], c1[1], c1[2], c1[3])
+	m2 := NewMultivector(c2[0], c2[1], c2[2], c2[3])
 	// Calculate addition.
 	ms := Addition(m1, m2)
 
 	if strings.Compare(ms.E0.RatString(), "9") != 0 ||
 		strings.Compare(ms.E1.RatString(), "9") != 0 ||
 		strings.Compare(ms.E2.RatString(), "9") != 0 ||
-		strings.Compare(ms.E3.RatString(), "9") != 0 ||
-		strings.Compare(ms.E12.RatString(), "9") != 0 ||
-		strings.Compare(ms.E13.RatString(), "9") != 0 ||
-		strings.Compare(ms.E23.RatString(), "9") != 0 ||
-		strings.Compare(ms.E123.RatString(), "9") != 0 {
+		strings.Compare(ms.E12.RatString(), "9") != 0 {
 		t.Errorf("error calculating addition")
 	}
 }
