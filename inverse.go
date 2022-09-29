@@ -20,7 +20,7 @@ func numerator(m Multivector) Multivector {
 
 // denominator to be defined.
 func denominator(m Multivector) int64 {
-	// TODO: change from int64 to bit.int, since numerators can grow past the size of an int64.
+	// TODO: change from int64 to big.int, since numerators can grow past the size of an int64.
 	// TODO: also check throughout the code base to change from ints to big.ints.
 	mc := m.copy()
 	r := Rationalize(mc)
