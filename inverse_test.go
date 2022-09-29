@@ -24,7 +24,7 @@ func initializeMultivector() Multivector {
 // Tests Inverse function
 func TestInverse(t *testing.T) {
 	m := initializeMultivector()
-	m = Inverse(m)
+	m.Inverse()
 
 	if strings.Compare(m.E0.RatString(), "40/1007") != 0 ||
 		strings.Compare(m.E1.RatString(), "29/1007") != 0 ||
@@ -37,12 +37,12 @@ func TestInverse(t *testing.T) {
 // Tests auxiliary function Numerator.
 func TestNumerator(t *testing.T) {
 	m := initializeMultivector()
-	m = numerator(m)
+	n := m.numerator()
 
-	if strings.Compare(m.E0.RatString(), "40280") != 0 ||
-		strings.Compare(m.E1.RatString(), "29203") != 0 ||
-		strings.Compare(m.E2.RatString(), "-29203") != 0 ||
-		strings.Compare(m.E12.RatString(), "-33231") != 0 {
+	if strings.Compare(n.E0.RatString(), "40280") != 0 ||
+		strings.Compare(n.E1.RatString(), "29203") != 0 ||
+		strings.Compare(n.E2.RatString(), "-29203") != 0 ||
+		strings.Compare(n.E12.RatString(), "-33231") != 0 {
 		t.Errorf("wrong results for numerator")
 	}
 }
@@ -50,7 +50,7 @@ func TestNumerator(t *testing.T) {
 // Tests auxiliary function Denominator.
 func TestDenominator(t *testing.T) {
 	m := initializeMultivector()
-	e0 := denominator(m)
+	e0 := m.denominator()
 
 	// TODO: refactor of comparison.
 	if strings.Compare(strconv.Itoa(int(e0)), "1014049") != 0 {

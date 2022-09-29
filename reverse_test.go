@@ -19,7 +19,7 @@ func TestReverse(t *testing.T) {
 	// m.e0, m.e1, m.e2, m.e3, m.e12, m.e13, m.e23, m.e123.
 	m := NewMultivector(c[0], c[1], c[2], c[3])
 
-	m = Reverse(m)
+	m.Reverse()
 
 	// 40e0 + 29e1 + -29e2 + 25e3 + 33e12 + -29e13 + 32e23 + 28e123
 	if strings.Compare(m.E0.RatString(), "40") != 0 ||

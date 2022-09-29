@@ -3,7 +3,7 @@ package ga3d
 import "math/big"
 
 // Reverse of a multivector.
-func Reverse(m Multivector) Multivector {
+func (m Multivector) Reverse() Multivector {
 	// pf = positive factor
 	pf := big.NewRat(1, 1)
 	// nf = negative factor

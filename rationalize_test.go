@@ -19,7 +19,7 @@ func TestRationalize(t *testing.T) {
 	// m.e0, m.e1, m.e2, m.e3, m.e12, m.e13, m.e23, m.e123.
 	m := NewMultivector(c[0], c[1], c[2], c[3])
 
-	m = Rationalize(m)
+	m.Rationalize()
 
 	if strings.Compare(m.E0.RatString(), "1014049") != 0 ||
 		strings.Compare(m.E1.RatString(), "0") != 0 ||

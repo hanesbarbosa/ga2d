@@ -23,10 +23,10 @@ func TestGeometricProduct(t *testing.T) {
 		c2 = append(c2, big.NewRat(n2[i], d))
 	}
 	// Generate multivectors.
-	m1 := NewMultivector(c1[0], c1[1], c1[2], c1[3])
+	m := NewMultivector(c1[0], c1[1], c1[2], c1[3])
 	m2 := NewMultivector(c2[0], c2[1], c2[2], c2[3])
 
-	m := GeometricProduct(m1, m2)
+	m.GeometricProduct(m2)
 
 	if strings.Compare(m.E0.RatString(), "7912") != 0 ||
 		strings.Compare(m.E1.RatString(), "-6977") != 0 ||

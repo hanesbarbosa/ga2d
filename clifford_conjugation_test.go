@@ -22,7 +22,7 @@ func TestCliffordConjugation(t *testing.T) {
 	// Generate multivectors.
 	m := NewMultivector(c1[0], c1[1], c1[2], c1[3])
 
-	m = CliffordConjugation(m)
+	m.CliffordConjugation()
 
 	if strings.Compare(m.E0.String(), "2/1") != 0 ||
 		strings.Compare(m.E1.String(), "-3/1") != 0 ||

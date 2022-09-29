@@ -1,9 +1,8 @@
 package ga3d
 
 // AmplitudeSquared gives the amplitude square of a multivector.
-func AmplitudeSquared(m Multivector) Multivector {
-	// Multivector to be returned.
+func (m Multivector) AmplitudeSquared() Multivector {
 	mc := m.copy()
-	ccm := CliffordConjugation(m)
-	return GeometricProduct(mc, ccm)
+	mc.CliffordConjugation()
+	return m.GeometricProduct(mc)
 }

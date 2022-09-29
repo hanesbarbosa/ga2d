@@ -5,7 +5,7 @@ import (
 )
 
 // CliffordConjugation gives the involution of a multivector.
-func CliffordConjugation(m Multivector) Multivector {
+func (m Multivector) CliffordConjugation() Multivector {
 	// pf = positive factor
 	pf := big.NewRat(1, 1)
 	// nf = negative factor

@@ -1,28 +1,29 @@
 package ga3d
 
 // Inverse gives the inverse of a multivector.
-func Inverse(m Multivector) Multivector {
+func (m Multivector) Inverse() Multivector {
 	mc := m.copy()
-	n := numerator(m)
-	d := denominator(mc)
+	n := m.numerator()
+	d := mc.denominator()
+
 	return n.SDiv(d)
 }
 
 // numerator to be defined.
-func numerator(m Multivector) Multivector {
+func (m Multivector) numerator() Multivector {
 	mc := m.copy()
-	as := AmplitudeSquared(m)
-	asr := Reverse(as)
-	cc := CliffordConjugation(mc)
+	mc.AmplitudeSquared()
+	mc.Reverse()
+	m.CliffordConjugation()
 
-	return GeometricProduct(cc, asr)
+	return m.GeometricProduct(mc)
 }
 
 // denominator to be defined.
-func denominator(m Multivector) int64 {
+func (m Multivector) denominator() int64 {
 	// TODO: change from int64 to big.int, since numerators can grow past the size of an int64.
 	// TODO: also check throughout the code base to change from ints to big.ints.
-	mc := m.copy()
-	r := Rationalize(mc)
-	return r.E0.Num().Int64()
+	m.Rationalize()
+
+	return m.E0.Num().Int64()
 }
