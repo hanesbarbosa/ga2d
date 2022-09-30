@@ -22,7 +22,7 @@ func TestSDiv(t *testing.T) {
 	// Generate multivectors.
 	m := NewMultivector(c1[0], c1[1], c1[2], c1[3])
 	// Scalar divisor.
-	s := int64(2)
+	s := big.NewInt(2)
 
 	m.SDiv(s)
 

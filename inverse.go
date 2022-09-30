@@ -1,5 +1,7 @@
 package ga3d
 
+import "math/big"
+
 // Inverse gives the inverse of a multivector.
 func (m Multivector) Inverse() Multivector {
 	mc := m.copy()
@@ -20,10 +22,9 @@ func (m Multivector) numerator() Multivector {
 }
 
 // denominator to be defined.
-func (m Multivector) denominator() int64 {
-	// TODO: change from int64 to big.int, since numerators can grow past the size of an int64.
-	// TODO: also check throughout the code base to change from ints to big.ints.
-	m.Rationalize()
+func (m Multivector) denominator() *big.Int {
+	mc := m.copy()
+	mc.Rationalize()
 
-	return m.E0.Num().Int64()
+	return mc.E0.Num()
 }

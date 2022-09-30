@@ -2,7 +2,6 @@ package ga3d
 
 import (
 	"math/big"
-	"strconv"
 	"strings"
 	"testing"
 )
@@ -50,10 +49,10 @@ func TestNumerator(t *testing.T) {
 // Tests auxiliary function Denominator.
 func TestDenominator(t *testing.T) {
 	m := initializeMultivector()
-	e0 := m.denominator()
+	d := m.denominator()
 
 	// TODO: refactor of comparison.
-	if strings.Compare(strconv.Itoa(int(e0)), "1014049") != 0 {
+	if strings.Compare(d.String(), "1014049") != 0 {
 		t.Errorf("wrong result for coefficient")
 	}
 }
